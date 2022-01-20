@@ -8,6 +8,7 @@ function App() {
   const [like, setLike] = useState(false);
   const [color, setColor] = useState("white");
   const [loading, setLoading] = useState(true);
+  const [label, setLabel] = useState("Like");
 
   const requestUrl =
     "https://api.nasa.gov/planetary/apod?api_key=SQOgyZ6EZ0asb9jpCEJamIFmohyBkeyaFQzMBdzG";
@@ -28,31 +29,36 @@ function App() {
 
   function likeButton() {
     setLike(!like);
-    console.log(color);
     setColor("red");
+    if(like){
+      setLabel("Unlike");
+    }
+    else{
+      setLabel("Like");
+    }
   }
   if (loading) {
     return "Still Loading";
   } else {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="potd">Nasa's Photo of the Day</h1>
-          <div className="container">
-            <img src={img} className="imageDisplay" alt="" />
-            <div className="middle">
-              <div className="text">
-                <p>{data}</p>
-                <p>{title}</p>
-                {/* <button onClick={likeButton()} style={{ color: color }}>
-                  ❤️
-                </button> */}
+      return (
+        <div className="App">
+          <header className="App-header">
+            <h1 className="potd">Nasa's Photo of the Day</h1>
+            <div className="container">
+              <img src={img} className="imageDisplay" alt="" />
+              <div className="middle">
+                <div className="text">
+                  <p>{data}</p>
+                  <p>{title}</p>
+                  <button onClick={likeButton} style={{color:color}}>
+                    {label}
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        </header>
-      </div>
-    );
-  }
+          </header>
+        </div>
+      );
+    }
 }
 export default App;

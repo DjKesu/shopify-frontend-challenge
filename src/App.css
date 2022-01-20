@@ -29,11 +29,11 @@
 
 .imageDisplay {
   opacity: 1;
-  display: flex;
-  justify-content: center;
-  width: 70%;
+  display: block;
+  width: 100%;
   height: auto;
   transition: .5s ease;
+  border-radius: 2.5%;
   backface-visibility: hidden;
 }
 
@@ -49,10 +49,13 @@
 
 .container:hover .imageDisplay {
   opacity: 0.9;
+  box-shadow: 20px 20px 30px -10px #192824;
 }
 
 .container:hover .middle {
   opacity: 1;
+  box-shadow: 20px 20px 30px -10px #192824;
+
 }
 
 .text {
