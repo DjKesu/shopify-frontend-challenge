@@ -25,16 +25,15 @@ function App() {
     setLoading(false);
   }
 
-  async function fetchRoverData() {
-    const response = await fetch(requestUrl2);
-    const parseres = await response.json();
-    // console.log(parseres);
-    setRoverData(parseres);
-    console.log(roverData);
-  }
   useEffect(() => {
     fetchPOTDData();
     fetchRoverData();
+
+    async function fetchRoverData() {
+      const response = await fetch(requestUrl2);
+      const parseres = await response.json();
+      setRoverData(parseres);
+    }
   }, []);
 
   if (loading) {
